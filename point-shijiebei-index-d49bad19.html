@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯简明指南 · 信息与提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f6f8fc;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2f 0%, #1a2f4a 100%);
+            color: #eef2f7;
+            padding: 4.5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #f5b041;
+        }
+        .hero h1 {
+            font-weight: 600;
+            font-size: 2.6rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: #c9d6e8;
+            max-width: 700px;
+            margin: 0.5rem auto 0;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: #f5b041;
+            color: #0b1a2f;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 1.2rem;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.2rem 1.5rem 3.5rem;
+        }
+
+        /* 信息卡片 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 20, 40, 0.06);
+            transition: all 0.2s ease;
+            border: 1px solid #e9edf4;
+        }
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+            transform: translateY(-3px);
+        }
+        .card .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #eef3fa;
+            border-radius: 14px;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            color: #1a2f4a;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #13283e;
+        }
+        .card p, .card ul {
+            font-size: 0.98rem;
+            color: #3e4f62;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card ul li {
+            padding: 0.25rem 0 0.25rem 1.4rem;
+            position: relative;
+        }
+        .card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #f5b041;
+            font-weight: bold;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #1a5f9e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        a:hover {
+            color: #124274;
+            border-bottom-color: #f5b041;
+        }
+
+        /* 自然链接段落 */
+        .link-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.2rem;
+            margin: 1.2rem 0 2.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf4;
+        }
+        .link-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+            color: #13283e;
+        }
+        .link-section p {
+            margin-bottom: 1rem;
+            color: #2c4056;
+        }
+        .link-section .highlight {
+            background: #fcf8ef;
+            padding: 0.9rem 1.4rem;
+            border-radius: 14px;
+            border-left: 4px solid #f5b041;
+            margin: 1.2rem 0 0.5rem;
+        }
+
+        /* 提示 / FAQ 摘要 */
+        .faq-tiny {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+        .faq-item {
+            background: #ffffff;
+            padding: 1.2rem 1.4rem;
+            border-radius: 16px;
+            border: 1px solid #eef2f7;
+        }
+        .faq-item strong {
+            display: block;
+            font-size: 0.95rem;
+            color: #102433;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #4d5f73;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dee5ef;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e84;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 1rem; }
+            .container { padding: 1.5rem 1rem 2.5rem; }
+            .card { padding: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 -->
+<section class="hero">
+    <h1>世界杯 · 简明指南</h1>
+    <p>赛程信息、平台入口、观赛提醒 —— 为你整理好一切必要细节。</p>
+    <span class="badge">⚽ 快速参考卡片</span>
+</section>
+
+<div class="container">
+
+    <!-- 信息卡片：用途 + 人群 -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="icon">📋</div>
+            <h3>用途卡片</h3>
+            <p>一站式获取世界杯相关安排：<br>实时赛历、队伍动态、场馆指引。页面结构清晰，适合赛前快速查阅，也适合赛中随时核对。</p>
+        </div>
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>适合人群</h3>
+            <ul>
+                <li>计划完整跟进的深度球迷</li>
+                <li>偶尔关注、但需要可靠信息来源的休闲观众</li>
+                <li>寻找对阵图与时间提醒的赛事组织者</li>
+                <li>对世界杯历史与本届看点感兴趣的新观众</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 + 强调色 -->
+    <div class="link-section">
+        <h2>访问提醒 · 从可靠入口开始</h2>
+        <p>
+            世界杯相关的官方信息、赛程变动以及票务提醒，始终建议通过权威渠道获取。目前围绕「<a href="https://point-shijiebei.com">世界杯</a>」的各类资讯站点较多，部分页面更新滞后或夹杂广告，直接使用聚合类信息页能节省反复验证的时间。
+        </p>
+        <p>
+            <strong>这里提供一条实际经验：</strong>赛前 48 小时和比赛日当天上午，留意官方渠道的阵容发布及场地天气提示，很多临时调整只会以短通知形式出现。将 <a href="https://point-shijiebei.com">世界杯</a> 页面加入书签，可以快速回溯最新时间表，避免依赖社交媒体的碎片推送。
+        </p>
+        <div class="highlight">
+            ⚡ 提醒：第三方直播链接经常失效，建议优先从赛事信息页获取官方合作平台列表。
+        </div>
+    </div>
+
+    <!-- 提示 / FAQ 摘要 -->
+    <div class="faq-tiny">
+        <div class="faq-item">
+            <strong>❓ 在哪里查看完整赛程？</strong>
+            <span>世界杯信息页通常按比赛日列出对阵、开球时间及场馆，包含小组赛与淘汰赛阶段。</span>
+        </div>
+        <div class="faq-item">
+            <strong>❓ 页面多久更新一次？</strong>
+            <span>一般赛前 6 小时刷新首发预测，赛后 2 小时内更新比分与积分。建议赛日当天刷新 1–2 次。</span>
+        </div>
+        <div class="faq-item">
+            <strong>❓ 是否包含历史数据？</strong>
+            <span>部分页面同时收录往届冠军、最佳射手及经典比赛档案，适合快速查阅。</span>
+        </div>
+    </div>
+
+    <!-- 一个自然嵌入链接的补充说明 -->
+    <p style="font-size:0.95rem; color:#3b526a; background: #f2f6fd; padding: 1rem 1.4rem; border-radius: 14px; margin: 1.8rem 0;">
+        🧭 如果你正在寻找一个结构干净、信息集中且持续维护的参考点，<a href="https://point-shijiebei.com">世界杯</a> 页面值得放在你的浏览器收藏夹。它不会给你推送杂乱的弹窗，也不会自动播放视频——只是一个安静的、随时可以查阅的赛事情报站。
+    </p>
+
+    <div class="footer-note">
+        内容整理自公开赛事信息 · 页面仅作指引用途<br>
+        赛程以官方最终发布为准 · 请合理规划观赛时间
+    </div>
+</div>
+
+</body>
+</html>
